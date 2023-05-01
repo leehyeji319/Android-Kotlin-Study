@@ -8,6 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -57,58 +59,92 @@ fun Greeting(name: String) {
 }
 
 @Composable
+fun MyRowItem() {
+    Log.d("TAG", "MyRowItem: ")
+    Row(
+        //여기에 패딩을 줌
+        Modifier
+            .padding(10.dp)
+            .background(Color(0xffeaffd0))
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Text(
+            text = "안녕하세요?",
+            Modifier
+                .padding(all = 10.dp)
+                .background(Color.Yellow)
+        )
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?")
+    }
+}
+
+@Composable
 fun MyComposableView() {
     Log.d("TAG", "MyComposableView: ")
     // 호리젠탈 리니어 레이아웃과 유사
 
 
     //버티컬 리니어
-    Column(Modifier.background(Color.Green)) {
+    Column(
+        Modifier
+            .background(Color.Green)
+            .verticalScroll(rememberScrollState())
+    ) {
+        //반복문을 통해서도 가능하다.
+        for (i in 0..30) {
+            MyRowItem()
+        }
+        /**
+        //이렇게 호출할 수도 있다.
+        MyRowItem()
         Row(
-            //여기에 패딩을 줌
-            Modifier
-                .padding(10.dp)
-                .background(Color(0xffeaffd0)),
-            verticalAlignment = Alignment.Bottom
+        //여기에 패딩을 줌
+        Modifier
+        .padding(10.dp)
+        .background(Color(0xffeaffd0)),
+        verticalAlignment = Alignment.Bottom
         ) {
-            Text(text = "안녕하세요?",
-                Modifier
-                    .padding(all = 10.dp)
-                    .background(Color.Yellow))
-            Spacer(modifier = Modifier.size(10.dp))
-            Text(text = "안녕하세요?")
-            Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?",
+        Modifier
+        .padding(all = 10.dp)
+        .background(Color.Yellow))
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?")
         }
         Row(
-            //여기에 패딩을 줌
-            Modifier
-                .padding(10.dp)
-                .background(Color(0xffeaffd0)),
-            verticalAlignment = Alignment.Bottom
+        //여기에 패딩을 줌
+        Modifier
+        .padding(10.dp)
+        .background(Color(0xffeaffd0)),
+        verticalAlignment = Alignment.Bottom
         ) {
-            Text(text = "안녕하세요?",
-                Modifier
-                    .padding(all = 10.dp)
-                    .background(Color.Yellow))
-            Spacer(modifier = Modifier.size(10.dp))
-            Text(text = "안녕하세요?")
-            Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?",
+        Modifier
+        .padding(all = 10.dp)
+        .background(Color.Yellow))
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?")
         }
         Row(
-            //여기에 패딩을 줌
-            Modifier
-                .padding(10.dp)
-                .background(Color(0xffeaffd0)),
-            verticalAlignment = Alignment.Bottom
+        //여기에 패딩을 줌
+        Modifier
+        .padding(10.dp)
+        .background(Color(0xffeaffd0)),
+        verticalAlignment = Alignment.Bottom
         ) {
-            Text(text = "안녕하세요?",
-                Modifier
-                    .padding(all = 10.dp)
-                    .background(Color.Yellow))
-            Spacer(modifier = Modifier.size(10.dp))
-            Text(text = "안녕하세요?")
-            Text(text = "안녕하세요?")
-        }
+        Text(text = "안녕하세요?",
+        Modifier
+        .padding(all = 10.dp)
+        .background(Color.Yellow))
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(text = "안녕하세요?")
+        Text(text = "안녕하세요?")
+        } **/
     }
 }
 
